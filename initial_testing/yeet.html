@@ -61,7 +61,10 @@
   color: #eee;
   font-weight: 600;
 }
-
+  .cube figure.empty {
+  color: white;
+  transform: rotateY(0deg) translateZ(calc(60px / 4 ));
+}
 .cube figure.front {
   color: white;
   transform: rotateY(0deg) translateZ(calc(60px / 4 ));
@@ -70,37 +73,7 @@
   color: white;
   transform: rotateX(180deg) translateZ(calc(60px / 4 ));
 }
-.arrow {
-  position: absolute;
-  top: 50%;
-  width: 3vmin;
-  height: 3vmin;
-  background: transparent;
-  border-top: 1vmin solid white;
-  border-right: 1vmin solid white;
-  box-shadow: 0 0 0 lightgray;
-  transition: all 200ms ease;
-}
-.arrow.right {
-  position:absolute;
-  right: 700px;
-  -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
-          transform: translate3d(0, -50%, 0) rotate(45deg);
-}
-.arrow:hover {
-  border-color: orange;
-  box-shadow: 0.5vmin -0.5vmin 0 white;
-}
-.arrow:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-40%, -60%) rotate(45deg);
-          transform: translate(-40%, -60%) rotate(45deg);
-  width: 200%;
-  height: 200%;
-}
+
 </style></head><body link="red">
 <div class="slogan">
 
@@ -134,13 +107,11 @@
   <div class="wrapper">
     <div class="cube fifth">
       <figure class="front">स्वागत हे</figure>
+      <figure class="back"><a href='pick_language.html'>Next</a></figure>
     </div>
   </div>
-  <break></break>
-  <break></break>
-  <a href="languagePicker.html" class="arrow right"></a>
- 
-</div>
+
+  </div>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script >$('.cube').delay(2000).queue(function () {
   $(this).toggleClass("flipped");
