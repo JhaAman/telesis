@@ -3,14 +3,18 @@
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <style class="cp-pen-styles">body {
-  background: #e9e9e9;
+  background: #ed2553; 
   color: #666666;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
 }
-
 
 /* Container */
 .container {
@@ -188,6 +192,7 @@
   text-transform: uppercase;
   overflow: hidden;
   transition: .3s ease;
+  color: darkslategray;
 }
 .card .button-container button span {
   position: relative;
@@ -210,10 +215,10 @@
   transition: .3s ease;
 }
 .card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
-  border-color: #ed2553;
+  border-color: #darkslategray;
 }
 .card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
-  color: #ed2553;
+  color: darkslategray;
 }
 .card .button-container button:active span, .card .button-container button:focus span {
   color: #ffffff;
@@ -257,7 +262,7 @@
 }
 .card.alt .toggle {
   position: relative;
-  background: #ed2553;
+  background: #008FFF;
   width: 140px;
   height: 140px;
   border-radius: 100%;
@@ -352,16 +357,12 @@
 }
 </style></head><body>
 
-<!-- Mixins-->
-<!-- Pen Title-->
 <div class="pen-title">
-  <h1>Material Login Form</h1><span>Pen <i class='fa fa-code'></i> by <a href='http://andytran.me'>Andy Tran</a></span>
 </div>
-<div class="rerun"><a href="">Rerun Pen</a></div>
 <div class="container">
   <div class="card"></div>
   <div class="card">
-    <h1 class="title">Login</h1>
+    <h1 class="title"><font color='#008FFF'>Login</font></h1>
     <form>
       <div class="input-container">
         <input type="#{type}" id="#{label}" required="required"/>
@@ -403,11 +404,6 @@
       <div class="input-container">
         <input type="#{type}" id="#{label}" required="required"/>
         <label for="#{label}">Password</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Repeat Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
