@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-e9c0cc5bb634d3d14b840de051920ac153d7d3d36fb050abad285779d7e5e8bd.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/sturner/pen/bwYrpr" />
+
+
+<style class="cp-pen-styles">.parent {
+  display: flex;
+  font-family: arial, sans-serif;
+}
+
+.item {
+  width: 50%;
+  padding: 2em;
+  color: #ffffff;
+  background: #eeeeee;
+  min-height: 500px;
+}
+
+.last {
+  color: #222;
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px){
+  
+  .parent {
+    flex-direction: column-reverse;  
+  }
+  
+  .item {
+    width: auto;
+    min-height: 200px;
+  }
+  
+  .last {
+    background: #aa0000;
+  }
+  
+}</style></head><body>
+<div class="parent">
+  
+  <div class="item" style="background: url(https://unsplash.it/800/300) center center no-repeat; background-size: cover;"></div>
+  
+  <div class="item last">
+    <h2>Flexbox - Split Screen Layout</h2>
+    <p>Example of a split screen layout that uses flexbox.</p>
+    <p>A media query is used to detect if the virewport is below 600px, if it is then <b>flex-direction</b> is set to column-reverse, so that the image is displayed after the copy, useful on mobile devices!.</p>
+    <p>Reduce the window size to below 600px to see an example.</p>
+  </div>
+  
+</div>
+
+</body></html>
