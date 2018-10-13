@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-e9c0cc5bb634d3d14b840de051920ac153d7d3d36fb050abad285779d7e5e8bd.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/ryangled/pen/MrWryx" />
+
+
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+  text-align: center;
+  margin: 80px 0;
+  font-weight: 300;
+}
+h3{
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.nav{
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  list-style-type: none;
+  background: darkslategray;
+  color: white;
+  padding: 100px;
+  letter-spacing: 0.1em;
+  font-weight: 900;
+  border-radius: 20px;
+}
+.btn{
+  padding: 50px;
+  width: 80%;
+  background: #ecf0f1;
+  margin: 30px 0px;
+  color: #2c3e50;
+  border-radius: 10px;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+</style></head><body bgcolor='darkslategray'>
+<ul class="nav">
+  <h3>Pick A Language</h3>
+  <a href="#"><li class="btn"><font size="9">English</font></li></a>
+  <a href="#"><li class="btn"><font size="9">Español</font></li></a>
+  <a href="#"><li class="btn"><font size="9">हिंदी</font></li></a>
+  <a href="#"><li class="btn"><font size="12.5">عربى</font></li></a>
+  <a href="#"><li class="btn"><font size="9">中文</font></li></a>
+  <a href="#"><li class="btn"><font size="9"><a href="login.html">Next</font></li></a>
+</ul>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script >(function() {
+  TweenMax.from("h1", 0.5, {
+    opacity: 0,
+    scale: 0
+  }, 2);
+
+  TweenMax.from("h3", 0.5, {
+    opacity: 0,
+    scale: 0
+  }, 2);
+
+  TweenMax.staggerFrom(".btn", 2, {
+    scale: 0.7,
+    opacity: 0,
+    delay: 0.5,
+    ease: Elastic.easeOut
+  }, 0.2);
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiPGFub255bW91cz4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBQSxRQUFRLENBQUMsSUFBVCxDQUFjLElBQWQsRUFBb0IsR0FBcEIsRUFBeUI7SUFBQyxPQUFBLEVBQVMsQ0FBVjtJQUFhLEtBQUEsRUFBTztFQUFwQixDQUF6QixFQUFpRCxDQUFqRDs7RUFDQSxRQUFRLENBQUMsSUFBVCxDQUFjLElBQWQsRUFBb0IsR0FBcEIsRUFBeUI7SUFBQyxPQUFBLEVBQVMsQ0FBVjtJQUFhLEtBQUEsRUFBTztFQUFwQixDQUF6QixFQUFpRCxDQUFqRDs7RUFFQSxRQUFRLENBQUMsV0FBVCxDQUFxQixNQUFyQixFQUE2QixDQUE3QixFQUFnQztJQUFDLEtBQUEsRUFBTSxHQUFQO0lBQVksT0FBQSxFQUFTLENBQXJCO0lBQXdCLEtBQUEsRUFBTyxHQUEvQjtJQUFvQyxJQUFBLEVBQUssT0FBTyxDQUFDO0VBQWpELENBQWhDLEVBQTJGLEdBQTNGO0FBSEEiLCJzb3VyY2VzQ29udGVudCI6WyJUd2Vlbk1heC5mcm9tKFwiaDFcIiwgMC41LCB7b3BhY2l0eTogMCwgc2NhbGU6IDB9LCAyKTtcblR3ZWVuTWF4LmZyb20oXCJoM1wiLCAwLjUsIHtvcGFjaXR5OiAwLCBzY2FsZTogMH0sIDIpO1xuXG5Ud2Vlbk1heC5zdGFnZ2VyRnJvbShcIi5idG5cIiwgMiwge3NjYWxlOjAuNywgb3BhY2l0eTogMCwgZGVsYXk6IDAuNSwgZWFzZTpFbGFzdGljLmVhc2VPdXR9LCAwLjIpO1xuXG4iXX0=
+//# sourceURL=coffeescript
+//# sourceURL=pen.js
+</script>
+</body></html>
