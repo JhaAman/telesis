@@ -11,83 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Pen Title */
-.pen-title {
-  padding: 50px 0;
-  text-align: center;
-  letter-spacing: 2px;
-}
-.pen-title h1 {
-  margin: 0 0 20px;
-  font-size: 48px;
-  font-weight: 300;
-}
-.pen-title span {
-  font-size: 12px;
-}
-.pen-title span .fa {
-  color: #ed2553;
-}
-.pen-title span a {
-  color: #ed2553;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* Rerun */
-.rerun {
-  margin: 0 0 30px;
-  text-align: center;
-}
-.rerun a {
-  cursor: pointer;
-  display: inline-block;
-  background: #ed2553;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  padding: 10px 20px;
-  color: #ffffff;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-.rerun a:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-/* Scroll To Bottom */
-#codepen, #portfolio {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #363636;
-  width: 56px;
-  height: 56px;
-  border-radius: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: 0.3s ease;
-  color: #ffffff;
-  text-align: center;
-}
-#codepen i, #portfolio i {
-  line-height: 56px;
-}
-#codepen:hover, #portfolio:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-
-/* CodePen */
-#portfolio {
-  bottom: 96px;
-  right: 36px;
-  background: #ed2553;
-  width: 44px;
-  height: 44px;
-  -webkit-animation: buttonFadeInUp 1s ease;
-  animation: buttonFadeInUp 1s ease;
-}
-#portfolio i {
-  line-height: 44px;
-}
 
 /* Container */
 .container {
@@ -493,8 +416,6 @@
     </form>
   </div>
 </div>
-<!-- Portfolio--><a id="portfolio" href="http://andytran.me/" title="View my portfolio!"><i class="fa fa-link"></i></a>
-<!-- CodePen--><a id="codepen" href="https://codepen.io/andytran/" title="Follow me!"><i class="fa fa-codepen"></i></a>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script >$('.toggle').on('click', function () {
   $('.container').stop().addClass('active');
