@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-e9c0cc5bb634d3d14b840de051920ac153d7d3d36fb050abad285779d7e5e8bd.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/BenFictional/pen/ddgBwE" />
+
+
+<style class="cp-pen-styles">body {
+  height: auto;
+  width: 100vw;
+  height: 100vh;
+  background: #ed2553;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 500px;
+  height: 60px;
+  position: relative;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(calc( 60px / 2 * -1 ));
+}
+.cube.flipped {
+  transform: translateZ(calc( 60px / 2 * -1 )) rotateX(-180deg);
+}
+.cube.first {
+  transition: transform .5s;
+}
+.cube.second {
+  transition: transform 1s;
+}
+.cube.third {
+  transition: transform 1.5s;
+}
+.cube.fourth {
+  transition: transform 2s;
+}
+.cube.fifth {
+  transition: transform 2.5s;
+}
+.cube figure {
+  margin: 0;
+  width: calc(width3D-3px);
+  height: calc(height3D-3px);
+  display: block;
+  position: absolute;
+  backface-visibility: hidden;
+  font-size: 60px;
+  font-family: 'Montserrat', sans-serif;
+  color: #eee;
+  font-weight: 600;
+}
+  .cube figure.empty {
+  color: white;
+  transform: rotateY(0deg) translateZ(calc(60px / 4 ));
+}
+.cube figure.front {
+  color: white;
+  transform: rotateY(0deg) translateZ(calc(60px / 4 ));
+}
+.cube figure.back {
+  color: white;
+  transform: rotateX(180deg) translateZ(calc(60px / 4 ));
+}
+
+</style></head><body link="red">
+<div class="slogan">
+
+  <div class="wrapper">
+    <div class="cube first">
+      <figure class="front">Welcome</figure>
+      <figure class="back">This</figure>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="cube second">
+      <figure class="front">欢迎</figure>
+      <figure class="back">is</figure>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="cube third">
+      <figure class="front">Bienvenido</figure>
+      <figure class="back">Telesis</figure>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="cube fourth">
+      <figure class="front">أهلا بك</figure>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="cube fifth">
+      <figure class="front">स्वागत हे</figure>
+      <figure class="back"><a href='/pick_language'>Next</a></figure>
+    </div>
+  </div>
+
+  </div>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script >$('.cube').delay(2000).queue(function () {
+  $(this).toggleClass("flipped");
+});
+//# sourceURL=pen.js
+</script>
+</body></html>

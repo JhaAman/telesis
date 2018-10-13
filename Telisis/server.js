@@ -18,8 +18,22 @@ MongoClient.connect(uri, {useNewUrlParser: true}, function(err, client) {
 app.set('viewengine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.get('/', (req, res) => {
+    res.render('yeet.ejs');
+});
+
+app.get('/pick_language', (req, res) => {
+    res.render('pick_language.ejs');
+});
+
+app.get('/pick_language/:lang', (req, res) => {
+    app.locals.lang = req.params.lang;
+    res.redirect('/login');
+});
+
 app.get('/login', (req, res) => {
-    res.render('login.ejs', {failed: false});
+    console.log(app.locals.lang);
+    res.render('realLogin.ejs', {eFail: false, uFail: false, failed: false, language: app.locals.lang});
 });
 
 app.post('/loginUser', (req, res) => {
@@ -27,7 +41,7 @@ app.post('/loginUser', (req, res) => {
     db.collection('users').find(query).toArray(function(err, results) {
         if (err) console.log(err);
         if (results.length == 0) {
-            res.render('login.ejs', {failed: true});
+            res.render('realLogin.ejs', {eFail: false, uFail: false, failed: true, language: app.locals.lang});
         } else {
             app.locals.username = req.body.username;
             res.redirect('/home');
@@ -35,40 +49,19 @@ app.post('/loginUser', (req, res) => {
     });
 });
 
-app.get('/register', (req, res) => {
-    res.render('register.ejs', {pFail: false, eFail: false, uFail: false});
-});
-
-app.post('/registerUser', (req, res) => {
-
-    var passwordsFail = false;
-    var usernameFail = false;
-    var emailFail = false;
-    
-    if(req.body.password != req.body.confirm) {
-        passwordsFail = true;
-    }
-    db.collection('users').find({username: req.body.username}).toArray(function(err, results) {
+app.post('/checkUser', (req, res) => {
+    db.collection('users').find({ $or: [ { username: req.body.username }, { email: req.body.email }]}).toArray(function(err, results) {
         if (err) console.log(err);
-        if (results.length > 0) { usernameFail = true; }
+        if (results.length != 0) { res.render('realLogin.ejs', {uFail: true, eFail: true, failed: false, language: app.locals.lang });  }
+        else { 
+            db.collection('users').insertOne(req.body, (err, result) => {
+                if (err) return console.log(err);
+                console.log('saved to database');
+                app.locals.username = req.body.username;
+                res.redirect('/home');
+            });
+        }
     });
-    db.collection('users').find({email: req.body.email}).toArray(function(err, results) {
-        if (err) console.log(err);
-        if (results.length > 0) { emailFail = true; }
-    });
-
-    if(passwordsFail || usernameFail || emailFail) { 
-        res.render('register.ejs', {pFail: passwordsFail, uFail: usernameFail, eFail: emailFail }); 
-    } else {
-        var userInfo = {username: req.body.username, email: req.body.email, password: req.body.password};
-        db.collection('users').insertOne(userInfo, (err, result) => {
-            if (err) return console.log(err);
-            console.log('saved to database');
-            app.locals.username = req.body.username;
-            res.redirect('/home');
-        });
-    }
-
 });
 
 app.get('/home', (req, res) => {
