@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 var uri = 'mongodb+srv://dkhurana:notaarat@cluster0-xtvcc.mongodb.net/test?retryWrites=true';
 
@@ -11,7 +13,9 @@ MongoClient.connect(uri, {useNewUrlParser: true}, function(err, client) {
     // perform actions on the collection object
      if(err) return console.log(err);
      db = client.db('TelesisDB');
-     app.listen(5000);
+     http.listen(3000, function() {
+        console.log('listening on *:3000');
+     });
      //client.close
  });
 
@@ -57,6 +61,7 @@ app.post('/checkUser', (req, res) => {
             db.collection('users').insertOne(req.body, (err, result) => {
                 if (err) return console.log(err);
                 console.log('saved to database');
+                app.locals.name = req.body.name;
                 app.locals.password = req.body.password;
                 app.locals.email = req.body.email;
                 app.locals.username = req.body.username;
@@ -72,7 +77,7 @@ app.get('/questionaire', (req, res) => {
 
 app.post('/question', (req, res) => {
     app.locals.userObject = { username: app.locals.username, password: app.locals.password, email: app.locals.email,
-        zip: parseInt(req.body.zip), location: req.body.location, primaryLanguage: req.body.primaryLanguage,
+        name: app.locals.name, pictureUrl: req.body.pictureUrl, zip: parseInt(req.body.zip), location: req.body.location, primaryLanguage: req.body.primaryLanguage,
         isFamily: req.body.isFamily, years: parseInt(req.body.years), country: req.body.country, religion: req.body.religion,
         industry: req.body.industry, haveKids: req.body.haveKids };
     db.collection('users').findOneAndReplace( { username: app.locals.username}, 
@@ -93,26 +98,52 @@ app.get('/home', (req, res) => {
     db.collection('users').findOne({username: app.locals.username}, (err, result) => {
         if (err) return console.log(err);
         console.log(result);
-        db.collection('users').find({zip: { $range: [ result.zip - 15, result.zip + 15 ] }}).toArray((err, arrResults) => {
-            var arr = [];
+        //{ $range: [ result.zip - 15, result.zip + 15 ] }
+        db.collection('users').find({zip: { $gt: result.zip - 15, $lt: result.zip + 15 }}).toArray((err, arrResults) => {
             var count = 0;
             for(var i = 0; i < arrResults.length; i++) {
-                if(result.isFamily.valueOf() == arrResults[i].isFamily.valueOf()) { count += 50; }
-                if (result.years - arrResults[i].years <= 1) {
-                    count = 0
+                if(result.isFamily.trim() === arrResults[i].isFamily.trim()) { count += 50; }
+                if (Math.abs(result.years - arrResults[i].years) <= 1 || result.username.trim() === arrResults[i].username.trim()) {
+                    count = 0;
+                    if(result.username.trim() === arrResults[i].username.trim()) {
+                        arrResults.splice(i, 1);
+                        i--
+                        continue;        
+                    }
                 } else {
                     count += 14 * (result.years - arrResults[i].years);
-                    if(result.country.valueOf() == arrResults[i].country.valueOf()) {count += 150;}
-                    if(result.primaryLanguage.valueOf() == arrResults[i].primaryLanguage.valueOf()) {count += 90;}
-                    if(result.religion.valueOf() == arrResults[i].religion.valueOf()) {count += 75;}
-                    if(result.industry.valueOf() == arrResults[i].industry.valueOf()) {count += 75;}
-                    if(result.haveKids.valueOf() == arrResults[i].haveKids.valueOf()) {count += 75;}
-                    arrResults[i][weight] = count;
+                    if(result.country.trim() === arrResults[i].country.trim()) {count += 150;}
+                    if(result.primaryLanguage.trim() === arrResults[i].primaryLanguage.trim()) {count += 90;}
+                    if(result.religion.trim() === arrResults[i].religion.trim()) {count += 75;}
+                    if(result.industry.trim() === arrResults[i].industry.trim()) {count += 75;}
+                    if(result.haveKids.trim() === arrResults[i].haveKids.trim()) {count += 75;}
                 }
-                console.log(arrResults[i]);
+                arrResults[i]['weight'] = count;
+                count = 0;
             }
-            arrResults.sort((a, b) => { return a.weight - b.weight });
+            arrResults.sort((a, b) => { return b.weight - a.weight });
+            res.render('matching.ejs', {results: arrResults});
         });
     });
 });
+
+var connections = [];
+
+app.get('/chat', function(req, res) {
+    io.sockets.on('connection',(socket) => {
+        connections.push(socket);
+        console.log(' %s sockets is connected', connections.length);
+     
+        socket.on('disconnect', () => {
+           connections.splice(connections.indexOf(socket), 1);
+        });
+     
+        socket.on('sending message', (message) => {
+           console.log('Message is received :', message);
+           io.sockets.emit('new message', {message: message});
+        });
+    });
+    res.render('chatLobby.ejs');
+});
+
 

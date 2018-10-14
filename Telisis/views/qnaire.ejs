@@ -108,7 +108,11 @@ input[type="submit"]:active {
     <input type="text" id="kids" name="haveKids" required/>
     <label for="kids" >Do you have any children?</label>
   </div>
-  <input type="submit" value="Join Our Team" />
+  <div class="material-design-input-group">
+      <input type="url" id="picture" name="pictureUrl" required/>
+      <label for="picture" >Upload Picture URL</label>
+    </div>
+  <input type="submit" value="Submit" />
 </form>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script >$(function () {
