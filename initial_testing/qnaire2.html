@@ -78,10 +78,42 @@ input[type="submit"]:active {
   font-size: 25px;
   color: #ed2553;
 }
+.arrow {
+  position: absolute;
+  top: 100%;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid white;
+  border-right: 1vmin solid white;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
+}
+.arrow.right {
+  position:absolute;
+  right: 700px;
+  -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
+          transform: translate3d(0, -50%, 0) rotate(45deg);
+}
+.arrow:hover {
+  border-color: orange;
+  box-shadow: 0.5vmin -0.5vmin 0 white;
+}
+.arrow:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-40%, -60%) rotate(45deg);
+          transform: translate(-40%, -60%) rotate(45deg);
+  width: 200%;
+  height: 200%;
+}
 </style></head>
 
 <body style='background-color:#ed2553'>
 
+
   <br></br>
   <br></br>
   <br></br>
@@ -106,6 +138,9 @@ input[type="submit"]:active {
   <br></br>
   
   
+
+
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  
   <h1 align="center"><font color="white" size='20'>Questionnaire</font></h1>  
 
@@ -160,12 +195,8 @@ input[type="submit"]:active {
     <label for="picture" >Upload Picture URL</label>
   </div>
   <br></br>
-  <div>
-    <div class="material-design-input-group">
-    <input type="submit" value="Submit"/>
-    <label for="submit"><a href='matching.html'>Submit</a></label>
-  </div>
-  <br></br>
+  <input type="submit" value="Submit" />
+  <a href="matching.html" class="arrow right"></a>
 </form>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script >$(function () {
