@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
-export default class AlignItemsBasics extends Component {
+export default class SneakyWalnut extends Component {
   render() {
     return (
       <View
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
 });
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => AlignItemsBasics);
+AppRegistry.registerComponent('AwesomeProject', () => SneakyWalnut);
