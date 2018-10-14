@@ -102,26 +102,26 @@ app.get('/home', (req, res) => {
         db.collection('users').find({zip: { $gt: result.zip - 15, $lt: result.zip + 15 }}).toArray((err, arrResults) => {
             var count = 0;
             for(var i = 0; i < arrResults.length; i++) {
-                if(result.isFamily.trim() === arrResults[i].isFamily.trim()) { count += 50; }
-                if (Math.abs(result.years - arrResults[i].years) <= 1 || result.username.trim() === arrResults[i].username.trim()) {
+                if(result.isFamily.trim().valueOf() == arrResults[i].isFamily.trim().valueOf()) { count += 50; }
+                if (Math.abs(result.years - arrResults[i].years) <= 1 || result.username.trim().valueOf() == arrResults[i].username.trim().valueOf()) {
                     count = 0;
-                    if(result.username.trim() === arrResults[i].username.trim()) {
-                        arrResults.splice(i, 1);
-                        i--
-                        continue;        
-                    }
+                    arrResults.splice(i, 1);
+                    i--;
+                    continue;        
                 } else {
-                    count += 14 * (result.years - arrResults[i].years);
-                    if(result.country.trim() === arrResults[i].country.trim()) {count += 150;}
-                    if(result.primaryLanguage.trim() === arrResults[i].primaryLanguage.trim()) {count += 90;}
-                    if(result.religion.trim() === arrResults[i].religion.trim()) {count += 75;}
-                    if(result.industry.trim() === arrResults[i].industry.trim()) {count += 75;}
-                    if(result.haveKids.trim() === arrResults[i].haveKids.trim()) {count += 75;}
+                    count += 14 * Math.abs(result.years - arrResults[i].years);
+                    if(result.country.trim().valueOf() == arrResults[i].country.trim().valueOf()) {count += 400;}
+                    if(result.primaryLanguage.trim().valueOf() == arrResults[i].primaryLanguage.trim().valueOf()) {count += 150;}
+                    if(result.religion.trim().valueOf() == arrResults[i].religion.trim().valueOf()) {count += 150;}
+                    if(result.industry.trim().valueOf() == arrResults[i].industry.trim().valueOf()) {count += 100;}
+                    if(result.haveKids.trim().valueOf() == arrResults[i].haveKids.trim().valueOf()) {count += 100;}
                 }
                 arrResults[i]['weight'] = count;
                 count = 0;
             }
-            arrResults.sort((a, b) => { return b.weight - a.weight });
+            arrResults.sort((a, b) => { return b.weight >= a.weight });
+            arrResults.sort();
+            console.log(arrResults);
             res.render('matching.ejs', {results: arrResults});
         });
     });
@@ -129,7 +129,20 @@ app.get('/home', (req, res) => {
 
 var connections = [];
 
-app.get('/chat', function(req, res) {
+app.get('/chat/:otherUser', function(req, res) {
+
+    var other = req.params.otherUser;
+    var thisUser = app.locals.username;
+
+    var arr = [other, thisUser];
+    arr.sort();
+
+    res.redirect('/chat/between/' + arr[0] + arr[1]);
+});
+
+app.get('/chat/between/:lobby', (req, res) => {
+    var newLobby = req.params.lobby;
+
     io.sockets.on('connection',(socket) => {
         connections.push(socket);
         console.log(' %s sockets is connected', connections.length);
@@ -142,7 +155,7 @@ app.get('/chat', function(req, res) {
            console.log('Message is received :', message);
            io.sockets.emit('new message', {message: message});
         });
-    });
+    }); 
     res.render('chatLobby.ejs');
 });
 
