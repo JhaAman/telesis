@@ -12,22 +12,22 @@ body {
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, -50%)
-
 }
 
 .material-design-form {
-  border: 4px solid white;
-  width: 500px;
-  padding: 50px;
-  padding-top: 25px;
-  border-radius: 2
+  border: 4px skyblue;
+  width: 1000px;
+  padding: 100px;
+  padding-top: 50px;
+  border-radius: 25px;
+  background: white;
 }
 
 input {
   background: white;
-  width: 500px;
-  border: solid 2px #ee6e73;
-  color: white;
+  width: 1000px;
+  border: solid 2px #black;
+  color: black;
   padding: 15px 40px;
   font-size: 20px;
   display: inline-block;
@@ -37,18 +37,19 @@ input:focus, input:active {
 }
 input[type="text"], input[type="email"], input[type="password"] {
   border: none;
-  border-bottom: solid 2px white;
+  border-bottom: solid 5px #ed2553;
 }
 input[type="submit"] {
-  margin-top: 50px;
+  margin-top: 40px;
   font-weight: 500;
+  font-size: 100px;
 }
 input[type="submit"]:hover {
   cursor: pointer;
 }
 input[type="submit"]:active {
-  color: white;
-  background: black;
+  color: #ed2553;
+  background: white;
 }
 
 .material-design-input-group {
@@ -66,64 +67,105 @@ input[type="submit"]:active {
   left: 0px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  font-size: 20px;
-  color: rgba(128, 128, 128, 0.6);
+  font-size: 30px;
+  color: #ed2553;
   pointer-events: none;
   transition: all 0.15s ease-out 0s;
 }
 .material-design-input-group input:focus + label,
 .material-design-input-group input.has-value + label {
-  top: -10px;
-  font-size: 15px;
-  color: rgba(128, 128, 128, 0.4);
+  top: -20px;
+  font-size: 25px;
+  color: #ed2553;
 }
-</style></head><body style='background-color:#ed2553'>
+</style></head>
+
+<body style='background-color:#ed2553'>
+
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  
+  
+ 
+  <h1 align="center"><font color="white" size='20'>Questionnaire</font></h1>  
+
 <form class="material-design-form">
   <div class="material-design-input-group">
-    <input type="number" id="zipcode" required/>
+    <input type="text" id="zipcode" required/>
     <label for="zipcode">Enter your zipcode</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="citystate" required/>
     <label for="citystate">Enter your city and state (City, State)</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="language" required/>
     <label for="language">What language do you primarily speak?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="family" required/>
     <label for="family">Are you representing your family or are you an individual on this service?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
-    <input type="number" id="stayduration" required/>
+    <input type="text" id="stayduration" required/>
     <label for="stayduration">How many years have you have you stayed in the United States?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="origin" required/>
     <label for="origin">What is your country of origin?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="religion" required/>
     <label for="religion" >What is your religion?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="industry" required/>
     <label for="industry">What industry do you work in?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="kids" required/>
     <label for="kids" >Do you have any children?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
-    <input type="text" id="picture" required/>
+    <input type="text" id="picture" name="" required/>
     <label for="picture" >Upload Picture URL</label>
   </div>
+  <br></br>
   <div>
     <div class="material-design-input-group">
     <input type="submit" value="Submit"/>
-    <label for="submit"><a href="matching.html">Submit</a></label>
-
+    <label for="submit"><a href='matching.html'>Submit</a></label>
+  </div>
+  <br></br>
 </form>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script >$(function () {
