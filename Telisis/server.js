@@ -23,11 +23,11 @@ app.set('viewengine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-    res.render('yeet.ejs');
+    res.render('welcomePage.ejs');
 });
 
 app.get('/pick_language', (req, res) => {
-    res.render('pick_language.ejs');
+    res.render('languagePicker.ejs');
 });
 
 app.get('/pick_language/:lang', (req, res) => {
@@ -130,7 +130,6 @@ app.get('/home', (req, res) => {
 var connections = [];
 
 app.get('/chat/:otherUser', function(req, res) {
-
     var other = req.params.otherUser;
     var thisUser = app.locals.username;
 
@@ -153,7 +152,8 @@ app.get('/chat/between/:lobby', (req, res) => {
      
         socket.on('sending message', (message) => {
            console.log('Message is received :', message);
-           io.sockets.emit('new message', {message: message});
+           var newMessage = req.body.username + ": " + message;
+           io.sockets.emit('new message', {message: newMessage});
         });
     }); 
     res.render('chatLobby.ejs');
