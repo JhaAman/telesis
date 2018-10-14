@@ -7,20 +7,27 @@ body {
   padding: 30px 30px;
   -webkit-font-smoothing: antialiased;
   font-family: "Roboto", sans-serif;
+  position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
 }
 
 .material-design-form {
-  border: 4px solid #ee6e73;
-  width: 500px;
-  padding: 50px;
-  padding-top: 25px;
+  border: 4px skyblue;
+  width: 1000px;
+  padding: 100px;
+  padding-top: 50px;
+  border-radius: 25px;
+  background: white;
 }
 
 input {
-  background: none;
-  width: 500px;
-  border: solid 2px #ee6e73;
-  color: #ee6e73;
+  background: white;
+  width: 1000px;
+  border: solid 2px #black;
+  color: black;
   padding: 15px 40px;
   font-size: 20px;
   display: inline-block;
@@ -30,18 +37,19 @@ input:focus, input:active {
 }
 input[type="text"], input[type="email"], input[type="password"] {
   border: none;
-  border-bottom: solid 2px #ee6e73;
+  border-bottom: solid 5px #ed2553;
 }
 input[type="submit"] {
   margin-top: 50px;
   font-weight: 500;
+  font-size: 100px;
 }
 input[type="submit"]:hover {
   cursor: pointer;
 }
 input[type="submit"]:active {
-  color: white;
-  background: #ee6e73;
+  color: #ed2553;
+  background: white;
 }
 
 .material-design-input-group {
@@ -59,60 +67,104 @@ input[type="submit"]:active {
   left: 0px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  font-size: 20px;
-  color: rgba(128, 128, 128, 0.6);
+  font-size: 30px;
+  color: #ed2553;
   pointer-events: none;
   transition: all 0.15s ease-out 0s;
 }
 .material-design-input-group input:focus + label,
 .material-design-input-group input.has-value + label {
-  top: -10px;
-  font-size: 15px;
-  color: rgba(128, 128, 128, 0.4);
+  top: -20px;
+  font-size: 25px;
+  color: #ed2553;
 }
-</style></head><body>
-<form class="material-design-form" method='POST' action='/question'>
+</style></head>
+
+<body style='background-color:#ed2553'>
+
+
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  
+  
+
+
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ 
+  <h1 align="center"><font color="white" size='20'>Questionnaire</font></h1>  
+
+<form class="material-design-form" method="POST" action="/question">
   <div class="material-design-input-group">
-    <input type="number" id="zipcode" name="zip" required/>
+    <input type="text" id="zipcode" name="zip" required/>
     <label for="zipcode">Enter your zipcode</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="citystate" name="location" required/>
     <label for="citystate">Enter your city and state (City, State)</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="language" name="primaryLanguage" required/>
     <label for="language">What language do you primarily speak?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="family" name="isFamily" required/>
     <label for="family">Are you representing your family or are you an individual on this service?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
-    <input type="number" id="stayduration" name="years" required/>
+    <input type="text" id="stayduration" name="years" required/>
     <label for="stayduration">How many years have you have you stayed in the United States?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="origin" name="country" required/>
     <label for="origin">What is your country of origin?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
-    <input type="text" id="relig" name="religion" required/>
+    <input type="text" id="religion" name="religion" required/>
     <label for="religion" >What is your religion?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="industry" name="industry" required/>
     <label for="industry">What industry do you work in?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
     <input type="text" id="kids" name="haveKids" required/>
     <label for="kids" >Do you have any children?</label>
   </div>
+  <br></br>
   <div class="material-design-input-group">
-      <input type="url" id="picture" name="pictureUrl" required/>
-      <label for="picture" >Upload Picture URL</label>
-    </div>
-  <input type="submit" value="Submit" />
+    <input type="text" id="picture" name="pictureUrl" required/>
+    <label for="picture" >Upload Picture URL</label>
+  </div>
+  <br></br>
+  <button type="submit" value="Submit"></button>
 </form>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script >$(function () {

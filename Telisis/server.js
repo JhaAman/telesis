@@ -76,6 +76,7 @@ app.get('/questionaire', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
+    console.log(req.body);
     app.locals.userObject = { username: app.locals.username, password: app.locals.password, email: app.locals.email,
         name: app.locals.name, pictureUrl: req.body.pictureUrl, zip: parseInt(req.body.zip), location: req.body.location, primaryLanguage: req.body.primaryLanguage,
         isFamily: req.body.isFamily, years: parseInt(req.body.years), country: req.body.country, religion: req.body.religion,
@@ -127,6 +128,8 @@ app.get('/home', (req, res) => {
     });
 });
 
+    
+
 var connections = [];
 
 app.get('/chat/:otherUser', function(req, res) {
@@ -141,8 +144,10 @@ app.get('/chat/:otherUser', function(req, res) {
 
 app.get('/chat/between/:lobby', (req, res) => {
     var newLobby = req.params.lobby;
+    res.render('chatLobby.ejs');
+});
 
-    io.sockets.on('connection',(socket) => {
+io.sockets.on('connection', (socket) => {
         connections.push(socket);
         console.log(' %s sockets is connected', connections.length);
      
@@ -152,11 +157,9 @@ app.get('/chat/between/:lobby', (req, res) => {
      
         socket.on('sending message', (message) => {
            console.log('Message is received :', message);
-           var newMessage = req.body.username + ": " + message;
+           var newMessage = app.locals.name + ": " + message;
            io.sockets.emit('new message', {message: newMessage});
-        });
-    }); 
-    res.render('chatLobby.ejs');
-});
+    });
+}); 
 
 
