@@ -20,6 +20,7 @@ body {
   width: 500px;
   padding: 50px;
   padding-top: 25px;
+  border-radius: 2
 }
 
 input {
@@ -114,10 +115,14 @@ input[type="submit"]:active {
     <input type="text" id="kids" required/>
     <label for="kids" >Do you have any children?</label>
   </div>
+  <div class="material-design-input-group">
+    <input type="text" id="picture" required/>
+    <label for="picture" >Upload Picture URL</label>
+  </div>
   <div>
     <div class="material-design-input-group">
     <input type="submit" value="Submit"/>
-    <label for="submit" >Submit</label>
+    <label for="submit"><a href="matching.html">Submit</a></label>
 
 </form>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
