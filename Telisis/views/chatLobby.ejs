@@ -32,7 +32,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
    <script>
         jQuery(document).ready(function() {
-         var socket = io.connect();
+         var socket = io().connect();
          var form = jQuery('#myForm');
          var txt = jQuery('#txt');
          var chatArea = jQuery('#chatArea');

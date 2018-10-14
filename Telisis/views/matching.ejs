@@ -117,6 +117,7 @@ body {
         <blockquote class="profile-quote">
           <p>Match Score: <%= results[i].weight %>, Zip Code: <%= results[i].zip %>, Country: <%= results[i].country %></p>
         </blockquote>
+        <form method="GET" action="/chat/<%= results[i].username %>"><button type="submit">Contact</button></form>
       </li>
   <% } %>
 </ul>
