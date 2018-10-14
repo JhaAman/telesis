@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-e9c0cc5bb634d3d14b840de051920ac153d7d3d36fb050abad285779d7e5e8bd.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/iammrdollar/pen/PzWRrd" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,300italic,300,100italic,100,900,900italic);
+body {
+  padding: 30px 30px;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Roboto", sans-serif;
+}
+
+.material-design-form {
+  border: 4px solid #ee6e73;
+  width: 500px;
+  padding: 50px;
+  padding-top: 25px;
+}
+
+input {
+  background: none;
+  width: 500px;
+  border: solid 2px #ee6e73;
+  color: #ee6e73;
+  padding: 15px 40px;
+  font-size: 20px;
+  display: inline-block;
+}
+input:focus, input:active {
+  outline: none;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+  border: none;
+  border-bottom: solid 2px #ee6e73;
+}
+input[type="submit"] {
+  margin-top: 50px;
+  font-weight: 500;
+}
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+input[type="submit"]:active {
+  color: white;
+  background: #ee6e73;
+}
+
+.material-design-input-group {
+  display: block;
+  margin-right: 20px;
+  margin-top: 35px;
+  position: relative;
+}
+.material-design-input-group input {
+  padding: 10px 0px;
+}
+.material-design-input-group label {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 20px;
+  color: rgba(128, 128, 128, 0.6);
+  pointer-events: none;
+  transition: all 0.15s ease-out 0s;
+}
+.material-design-input-group input:focus + label,
+.material-design-input-group input.has-value + label {
+  top: -10px;
+  font-size: 15px;
+  color: rgba(128, 128, 128, 0.4);
+}
+</style></head><body>
+<form class="material-design-form" method='POST' action='/question'>
+  <div class="material-design-input-group">
+    <input type="number" id="zipcode" name="zip" required/>
+    <label for="zipcode">Enter your zipcode</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="citystate" name="location" required/>
+    <label for="citystate">Enter your city and state (City, State)</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="language" name="primaryLanguage" required/>
+    <label for="language">What language do you primarily speak?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="family" name="isFamily" required/>
+    <label for="family">Are you representing your family or are you an individual on this service?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="number" id="stayduration" name="years" required/>
+    <label for="stayduration">How many years have you have you stayed in the United States?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="origin" name="country" required/>
+    <label for="origin">What is your country of origin?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="relig" name="religion" required/>
+    <label for="religion" >What is your religion?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="industry" name="industry" required/>
+    <label for="industry">What industry do you work in?</label>
+  </div>
+  <div class="material-design-input-group">
+    <input type="text" id="kids" name="haveKids" required/>
+    <label for="kids" >Do you have any children?</label>
+  </div>
+  <div class="material-design-input-group">
+      <input type="url" id="picture" name="pictureUrl" required/>
+      <label for="picture" >Upload Picture URL</label>
+    </div>
+  <input type="submit" value="Submit" />
+</form>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script >$(function () {
+  $('.material-design-form .material-design-input-group input').focusout(function () {
+    var any_input = $(this).val(); //get input value after focusout
+    if (any_input === "") //if input value is empty
+      {
+        $(this).removeClass('has-value');
+      } else
+
+    {
+      $(this).addClass('has-value');
+    }
+  });
+});
+//# sourceURL=pen.js
+</script>
+</body></html>
